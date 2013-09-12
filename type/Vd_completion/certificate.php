@@ -1,29 +1,5 @@
 <?php
 
-// This file is part of the Certificate module for Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
-/**
- * A4_non_embedded certificate type
- *
- * @package    mod
- * @subpackage certificate
- * @copyright  Mark Nelson <markn@moodle.com>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-
 if (!defined('MOODLE_INTERNAL')) {
     die('Direct access to this script is forbidden.'); // It must be included from view.php
 }
@@ -88,18 +64,16 @@ certificate_print_image($pdf, $certificate, CERT_IMAGE_SIGNATURE, $sigx, $sigy, 
 
 // Add text
 $pdf->SetTextColor(0, 0, 120);
-certificate_print_text($pdf, $x, $y, 'C', 'Helvetica', '', 30, get_string('title', 'certificate'));
+certificate_print_text($pdf, $x, $y, 'C', 'Helvetica', '', 30, get_string('vd_comp_title', 'certificate'));
 $pdf->SetTextColor(0, 0, 0);
 certificate_print_text($pdf, $x, $y + 20, 'C', 'Times', '', 20, get_string('certify', 'certificate'));
 certificate_print_text($pdf, $x, $y + 36, 'C', 'Helvetica', '', 30, fullname($USER));
-certificate_print_text($pdf, $x, $y + 55, 'C', 'Helvetica', '', 20, get_string('statement', 'certificate'));
+certificate_print_text($pdf, $x, $y + 55, 'C', 'Helvetica', '', 20, get_string('vd_comp_statement', 'certificate'));
 certificate_print_text($pdf, $x, $y + 72, 'C', 'Helvetica', '', 20, $course->fullname);
 certificate_print_text($pdf, $x, $y + 92, 'C', 'Helvetica', '', 14, certificate_get_date($certificate, $certrecord, $course));
 certificate_print_text($pdf, $x, $y + 102, 'C', 'Times', '', 10, certificate_get_grade($certificate, $course));
 certificate_print_text($pdf, $x, $y + 112, 'C', 'Times', '', 10, certificate_get_outcome($certificate, $course));
-if ($certificate->printhours) {
-    certificate_print_text($pdf, $x, $y + 122, 'C', 'Times', '', 10, get_string('credithours', 'certificate') . ': ' . $certificate->printhours);
-}
+//certificate_print_text($pdf, $x, $y + 122, 'C', 'Times', '', 10, certificate_get_credit_hours($certificate));
 certificate_print_text($pdf, $x, $codey, 'C', 'Times', '', 10, certificate_get_code($certificate, $certrecord));
 $i = 0;
 if ($certificate->printteacher) {
@@ -112,5 +86,6 @@ if ($certificate->printteacher) {
     }
 }
 
+//certificate_print_text($pdf, $custx, $custy, 'L', '', '', '', $certificate->customtext);
 certificate_print_text($pdf, $custx, $custy, 'L', null, null, null, $certificate->customtext);
 ?>

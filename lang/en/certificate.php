@@ -1,11 +1,26 @@
 <?php
 
+// This file is part of the Certificate module for Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * Language strings for the certificate module
  *
  * @package    mod
  * @subpackage certificate
- * @copyright  Mark Nelson <mark@moodle.com.au>
+ * @copyright  Mark Nelson <markn@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -25,11 +40,12 @@ $string['bordergreen'] = 'Green';
 $string['borderlines'] = 'Lines';
 $string['borderstyle'] = 'Border Image';
 $string['borderstyle_help'] = 'The Border Image option allows you to choose a border image from the certificate/pix/borders folder.  Select the border image that you want around the certificate edges or select no border.';
-$string['certificate:view'] = 'View Certificate';
-$string['certificate:manage'] = 'Manage Certificate';
-$string['certificate:printteacher'] = 'Print Teacher';
-$string['certificate:student'] = 'Get Certificate';
 $string['certificate'] = 'Verification for certificate code:';
+$string['certificate:addinstance'] = 'Add a certificate instance';
+$string['certificate:manage'] = 'Manage a certificate instance';
+$string['certificate:printteacher'] = 'Be listed as a teacher on the certificate if the print teacher setting is on';
+$string['certificate:student'] = 'Retrieve a certificate';
+$string['certificate:view'] = 'View a certificate';
 $string['certificatename'] = 'Certificate Name';
 $string['certificatereport'] = 'Certificates Report';
 $string['certificatesfor'] = 'Certificates for';
@@ -49,6 +65,8 @@ $string['completiondate'] = 'Course Completion';
 $string['course'] = 'For';
 $string['coursegrade'] = 'Course Grade';
 $string['coursename'] = 'Course';
+$string['coursetimereq'] = 'Required minutes in course';
+$string['coursetimereq_help'] = 'Enter here the minimum amount of time, in minutes, that a student must be logged into the course before they will be able to receive the certificate.';
 $string['credithours'] = 'Credit Hours';
 $string['customtext'] = 'Custom Text';
 $string['customtext_help'] = 'If you want the certificate to print different names for the teacher than those who are assigned
@@ -99,6 +117,7 @@ Letter Grade: Prints the percentage grade as a letter.';
 $string['gradeletter'] = 'Letter Grade';
 $string['gradepercent'] = 'Percentage Grade';
 $string['gradepoints'] = 'Points Grade';
+$string['imagetype'] = 'Image Type';
 $string['incompletemessage'] = 'In order to download your certificate, you must first complete all required '.'activities. Please return to the course to complete your coursework.';
 $string['intro'] = 'Introduction';
 $string['issueoptions'] = 'Issue Options';
@@ -114,6 +133,7 @@ $string['mycertificates'] = 'My Certificates';
 $string['nocertificates'] = 'There are no certificates';
 $string['nocertificatesissued'] = 'There are no certificates that have been issued';
 $string['nocertificatesreceived'] = 'has not received any course certificates.';
+$string['nofileselected'] = 'Must choose a file to upload!';
 $string['nogrades'] = 'No grades available';
 $string['notapplicable'] = 'N/A';
 $string['notfound'] = 'The certificate number could not be validated.';
@@ -155,10 +175,14 @@ $string['removecert'] = 'Issued certificates removed';
 $string['report'] = 'Report';
 $string['reportcert'] = 'Report Certificates';
 $string['reportcert_help'] = 'If you choose yes here, then this certificate\'s date received, code number, and the course name will be shown on the user certificate reports.  If you choose to print a grade on this certificate, then that grade will also be shown on the certificate report.';
+$string['requiredtimenotmet'] = 'You must spend at least a minimum of {$a->requiredtime} minutes in the course before you can access this certificate';
+$string['requiredtimenotvalid'] = 'The required time must be a valid number greater than 0';
 $string['reviewcertificate'] = 'Review your certificate';
 $string['savecert'] = 'Save Certificates';
 $string['savecert_help'] = 'If you choose this option, then a copy of each user\'s certificate pdf file is saved in the course files moddata folder for that certificate. A link to each user\'s saved certificate will be displayed in the certificate report.';
+$string['seal'] = 'Seal';
 $string['sigline'] = 'line';
+$string['signature'] = 'Signature';
 $string['statement'] = 'has completed the course';
 $string['summaryofattempts'] = 'Summary of Previously Received Certificates';
 $string['textoptions'] = 'Text Options';
@@ -168,9 +192,32 @@ $string['typeA4_embedded'] = 'A4 Embedded';
 $string['typeA4_non_embedded'] = 'A4 Non-Embedded';
 $string['typeletter_embedded'] = 'Letter Embedded';
 $string['typeletter_non_embedded'] = 'Letter Non-Embedded';
+$string['unsupportedfiletype'] = 'File must be a jpeg or png file';
+$string['uploadimage'] = 'Upload image';
+$string['uploadimagedesc'] = 'This button will take you to a new screen where you will be able to upload images.';
 $string['userdateformat'] = 'User\'s Language Date Format';
 $string['validate'] = 'Verify';
 $string['verifycertificate'] = 'Verify Certificate';
 $string['viewcertificateviews'] = 'View {$a} issued certificates';
 $string['viewed'] = 'You received this certificate on:';
 $string['viewtranscript'] = 'View Certificates';
+$string['watermark'] = 'Watermark';
+
+
+
+//custom string
+$string['coursetime'] = 'Course time(minutes)';
+$string['coursetimeerror'] = 'Time spend in course should be numeric.';
+$string['coursetime_help']='Set the minimum time spend in a course(in minutes) to get certificate';
+$string['modulename_help'] = 'The Certificate module enables the student to get a certificate.';
+
+
+$string['typeVd_completion'] = 'Vd Completion';
+$string['typeVd_enrollment'] = 'Vd Enrollment';
+
+$string['vd_comp_title'] = 'CERTIFICATE of COMPLETION';
+$string['vd_comp_statement'] = 'has satisfactorily completed the course';
+
+$string['vd_enl_title'] = 'CERTIFICATE of ENROLLMENT';
+$string['vd_enl_certify'] = 'This certifies that the following student';
+$string['vd_enl_statement'] =  'is enrolled in';

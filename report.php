@@ -1,11 +1,26 @@
 <?php
 
+// This file is part of the Certificate module for Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * Handles viewing the report
  *
  * @package    mod
  * @subpackage certificate
- * @copyright  Mark Nelson <mark@moodle.com.au>
+ * @copyright  Mark Nelson <markn@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -86,7 +101,7 @@ if ($download == "ods") {
     require_once("$CFG->libdir/odslib.class.php");
 
     // Calculate file name
-    $filename = clean_filename("$course->shortname ".strip_tags(format_string($certificate->name,true))).'.ods';
+    $filename = clean_filename("$course->shortname " . rtrim($certificate->name, '.') . '.ods');
     // Creating a workbook
     $workbook = new MoodleODSWorkbook("-");
     // Send HTTP headers
@@ -135,7 +150,7 @@ if ($download == "xls") {
     require_once("$CFG->libdir/excellib.class.php");
 
     // Calculate file name
-    $filename = clean_filename("$course->shortname " . strip_tags(format_string($certificate->name, true))) . '.xls';
+    $filename = clean_filename("$course->shortname " . rtrim($certificate->name, '.') . '.xls');
     // Creating a workbook
     $workbook = new MoodleExcelWorkbook("-");
     // Send HTTP headers
@@ -181,7 +196,7 @@ if ($download == "xls") {
 }
 
 if ($download == "txt") {
-    $filename = clean_filename("$course->shortname " . strip_tags(format_string($certificate->name, true))) . '.txt';
+    $filename = clean_filename("$course->shortname " . rtrim($certificate->name, '.') . '.txt');
 
     header("Content-Type: application/download\n");
     header("Content-Disposition: attachment; filename=\"$filename\"");
